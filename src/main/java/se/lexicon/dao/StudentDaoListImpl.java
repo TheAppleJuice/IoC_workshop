@@ -3,6 +3,7 @@ package se.lexicon.dao;
 import org.springframework.stereotype.Component;
 import se.lexicon.model.Student;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Component("studentDao")
