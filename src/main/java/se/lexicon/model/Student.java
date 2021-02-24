@@ -3,7 +3,7 @@ package se.lexicon.model;
 import java.util.Objects;
 
 public class Student {
-    private int id;
+    private int studentId;
     private String name;
 
     public Student() {
@@ -13,17 +13,17 @@ public class Student {
         this.name = name;
     }
 
-    public Student(int id, String name) {
-        this.id = id;
+    public Student(int studentId, String name) {
+        this.studentId = studentId;
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {
@@ -39,18 +39,18 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return id == student.id && Objects.equals(name, student.name);
+        return studentId == student.studentId && Objects.equals(name, student.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(studentId, name);
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                "studentId=" + studentId +
                 ", name='" + name + '\'' +
                 '}';
     }
