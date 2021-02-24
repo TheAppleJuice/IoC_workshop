@@ -4,9 +4,7 @@ package se.lexicon;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.config.ComponentScanConfig;
 import se.lexicon.dao.StudentDao;
-import se.lexicon.model.Student;
-
-import java.util.List;
+import se.lexicon.util.UserInputService;
 
 public class App
 {
@@ -14,13 +12,16 @@ public class App
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         StudentDao studentDao = context.getBean("studentDaoListImpl", StudentDao.class);
-
+        UserInputService userInputService = context.getBean(UserInputService.class);
+/*
         Student student1 = studentDao.save(new Student("Sebastian"));
         Student student2 = studentDao.save(new Student("Emma"));
         Student student3 = studentDao.save(new Student("Matteo"));
         Student student4 = studentDao.save(new Student("Oliver"));
         Student student5 = studentDao.save(new Student("Test"));
 
+
+ */
 /*
         Student find2 = studentDao.find(2);
         System.out.println(find2);
@@ -29,11 +30,11 @@ public class App
         System.out.println(find1);
  */
 
-       studentDao.delete(5);
+      // studentDao.delete(5);
 
 
-        List<Student> findAll = studentDao.findAll();
-        findAll.forEach(System.out::println);
+       // List<Student> findAll = studentDao.findAll();
+       // findAll.forEach(System.out::println);
 
 
 
