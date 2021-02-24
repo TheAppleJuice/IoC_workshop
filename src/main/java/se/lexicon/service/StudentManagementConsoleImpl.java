@@ -1,12 +1,15 @@
 package se.lexicon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.StudentDao;
 import se.lexicon.model.Student;
 import se.lexicon.util.UserInputService;
 
 import java.util.List;
 
+
+@Component
 public class StudentManagementConsoleImpl implements StudentManagement{
 
     private StudentDao studentDao;
@@ -41,9 +44,8 @@ public class StudentManagementConsoleImpl implements StudentManagement{
 
     @Override
     public Student find(int id) {
-        System.out.println("Enter student id: ");
-        int scannerId = userInputService.getInt();
-        return studentDao.find(scannerId);
+
+        return studentDao.find(id);
     }
 
     @Override

@@ -4,6 +4,7 @@ package se.lexicon;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.config.ComponentScanConfig;
 import se.lexicon.dao.StudentDao;
+import se.lexicon.service.StudentManagement;
 import se.lexicon.util.UserInputService;
 
 public class App
@@ -13,6 +14,14 @@ public class App
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         StudentDao studentDao = context.getBean(StudentDao.class);
         UserInputService userInputService = context.getBean(UserInputService.class);
+        StudentManagement studentManagement = context.getBean(StudentManagement.class);
+
+        System.out.println(studentManagement.create());
+        System.out.println("---------------------");
+        System.out.println(studentManagement.find(1));
+        System.out.println("---------------------");
+
+
 /*
         Student student1 = studentDao.save(new Student("Sebastian"));
         Student student2 = studentDao.save(new Student("Emma"));
