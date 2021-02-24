@@ -8,11 +8,11 @@ public class Student {
 
     public Student() {
     }
-
+    //Add student to database
     public Student(String name) {
         this.name = name;
     }
-
+    //Edit student
     public Student(int studentId, String name) {
         this.studentId = studentId;
         this.name = name;

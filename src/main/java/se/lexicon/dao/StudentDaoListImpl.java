@@ -7,7 +7,7 @@ import se.lexicon.model.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component ("studentDaoListImpl")
+@Component
 public class StudentDaoListImpl implements StudentDao {
 
     private List<Student> students = new ArrayList<>();

@@ -11,7 +11,7 @@ public class App
     public static void main( String[] args ) {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
-        StudentDao studentDao = context.getBean("studentDaoListImpl", StudentDao.class);
+        StudentDao studentDao = context.getBean(StudentDao.class);
         UserInputService userInputService = context.getBean(UserInputService.class);
 /*
         Student student1 = studentDao.save(new Student("Sebastian"));
