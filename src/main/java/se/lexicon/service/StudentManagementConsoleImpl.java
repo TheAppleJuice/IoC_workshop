@@ -27,9 +27,9 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     @Override
     public Student create() {
         System.out.println("Enter your name: ");
-        String name = userInputService.getString();
+        String studentName = userInputService.getString();
         Student addStudent = new Student();
-        addStudent.setName(name);
+        addStudent.setName(studentName);
 
         return save(addStudent);
     }
@@ -44,6 +44,8 @@ public class StudentManagementConsoleImpl implements StudentManagement{
 
     @Override
     public Student find(int id) {
+        if (id == 0)
+            throw new IllegalArgumentException("No student found with id: " + id);
 
         return studentDao.find(id);
     }
@@ -51,24 +53,30 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     @Override
     public Student remove(int id) {
         Student studentToRemove = find(id);
+        if (studentToRemove == null)
+            throw new IllegalArgumentException("No student found with id: " + id);
+
         studentDao.delete(id);
+
         return studentToRemove;
     }
 
     @Override
     public List<Student> findAll() {
+        System.out.println("All listed students: ");
         return studentDao.findAll();
     }
 
     @Override
     public Student edit(Student student) {
-        if (student.getStudentId() == 0) throw new NullPointerException("Student id can not be null");
-        student.getStudentId();
+        if (student.getStudentId() == 0)
+            throw new NullPointerException("Student id can not be null");
+        Student original = find(student.getStudentId());
 
-        System.out.println("Edit: ");
+        System.out.println("Edit name: ");
         String editName = userInputService.getString();
-        student.setName(editName);
+        original.setName(editName);
 
-        return student;
+        return original;
     }
 }

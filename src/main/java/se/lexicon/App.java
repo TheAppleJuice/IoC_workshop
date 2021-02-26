@@ -4,8 +4,11 @@ package se.lexicon;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.config.ComponentScanConfig;
 import se.lexicon.dao.StudentDao;
+import se.lexicon.model.Student;
 import se.lexicon.service.StudentManagement;
 import se.lexicon.util.UserInputService;
+
+import java.util.List;
 
 public class App
 {
@@ -16,36 +19,47 @@ public class App
         UserInputService userInputService = context.getBean(UserInputService.class);
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
 
+        System.out.println("Create student object: ");
         System.out.println(studentManagement.create());
+
+
         System.out.println("---------------------");
+        System.out.println("Save student: ");
+
+        Student student1 = studentManagement.save(new Student("Sebastian"));
+        Student student2 = studentManagement.save(new Student("Emma"));
+        Student student3 = studentManagement.save(new Student("Matteo"));
+        Student student4 = studentManagement.save(new Student("Oliver"));
+        Student student5 = studentManagement.save(new Student("Test"));
+
+
+        System.out.println("---------------------");
+        System.out.println("Find all students: ");
+        List<Student> findAll = studentManagement.findAll();
+        findAll.forEach(System.out::println);
+
+
+        System.out.println("---------------------");
+        System.out.println("Deleted student by id (id 1)");
+        studentDao.delete(1);
+
+
+        System.out.println("---------------------");
+        System.out.println("Find all students again: ");
+       List<Student> finaAllAgain = studentManagement.findAll();
+       finaAllAgain.forEach(System.out::println);
+
+        System.out.println("---------------------");
+
+        System.out.println("Find student by id: ");
         System.out.println(studentManagement.find(1));
+
+        Student editStudent = studentManagement.edit(student1);
+
         System.out.println("---------------------");
-
-
-/*
-        Student student1 = studentDao.save(new Student("Sebastian"));
-        Student student2 = studentDao.save(new Student("Emma"));
-        Student student3 = studentDao.save(new Student("Matteo"));
-        Student student4 = studentDao.save(new Student("Oliver"));
-        Student student5 = studentDao.save(new Student("Test"));
-
-
- */
-/*
-        Student find2 = studentDao.find(2);
-        System.out.println(find2);
-
-        Student find1 = studentDao.find(1);
-        System.out.println(find1);
- */
-
-      // studentDao.delete(5);
-
-
-       // List<Student> findAll = studentDao.findAll();
-       // findAll.forEach(System.out::println);
-
-
+        System.out.println("Find all students again with edit function: ");
+        List<Student> finaAllEdit = studentManagement.findAll();
+        finaAllEdit.forEach(System.out::println);
 
 
     }
