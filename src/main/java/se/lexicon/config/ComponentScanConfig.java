@@ -16,4 +16,5 @@ public class ComponentScanConfig {
         return new Scanner(System.in);
     }
 
+
 }

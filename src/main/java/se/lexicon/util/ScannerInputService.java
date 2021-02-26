@@ -17,7 +17,7 @@ public class ScannerInputService implements UserInputService{
 
     @Override
     public String getString() {
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     @Override

@@ -38,7 +38,9 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     public Student save(Student student) {
         if (student == null)
             throw new IllegalArgumentException("Student name is null");
-
+        if (student.getStudentId()>0){
+            throw new IllegalArgumentException("Student Id should 0");
+        }
         return studentDao.save(student);
     }
 
@@ -69,14 +71,17 @@ public class StudentManagementConsoleImpl implements StudentManagement{
 
     @Override
     public Student edit(Student student) {
+
+        //todo: check if student null.
         if (student.getStudentId() == 0)
             throw new NullPointerException("Student id can not be null");
-        Student original = find(student.getStudentId());
 
         System.out.println("Edit name: ");
         String editName = userInputService.getString();
-        original.setName(editName);
+        System.out.println("Test" + editName);
+        student.setName(editName);
+        studentDao.save(student);
 
-        return original;
+        return student;
     }
 }

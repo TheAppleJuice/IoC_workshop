@@ -10,11 +10,11 @@ import se.lexicon.util.UserInputService;
 
 import java.util.List;
 
-public class App
-{
-    public static void main( String[] args ) {
+public class App {
+    public static void main(String[] args) {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
+
         StudentDao studentDao = context.getBean(StudentDao.class);
         UserInputService userInputService = context.getBean(UserInputService.class);
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
@@ -40,32 +40,34 @@ public class App
 
 
         System.out.println("---------------------");
-        System.out.println("Deleted student by id (id 1)");
+        System.out.println("Deleted student by id 1");
         studentDao.delete(1);
 
 
         System.out.println("---------------------");
         System.out.println("Find all students again: ");
-       List<Student> finaAllAgain = studentManagement.findAll();
-       finaAllAgain.forEach(System.out::println);
+        List<Student> finaAllAgain = studentManagement.findAll();
+        finaAllAgain.forEach(System.out::println);
 
         System.out.println("---------------------");
 
-        System.out.println("Find student by id 1: ");
-        System.out.println(studentManagement.find(1));
-        System.out.println("Find student by id 3: ");
-        System.out.println(studentManagement.find(3));
+        System.out.print("Find student by id 4");
+        System.out.print(studentManagement.find(userInputService.getInt()));
 
-        Student editStudent = studentManagement.edit(student1);
+
+
+        System.out.println("---------------------");
+        System.out.println("Edit student");
+
+        Student editStudent = studentManagement.edit(student2);
+        System.out.println("Edited student = " + editStudent);
 
         System.out.println("---------------------");
         System.out.println("Find all students again with edit function: ");
         List<Student> finaAllEdit = studentManagement.findAll();
         finaAllEdit.forEach(System.out::println);
 
-        System.out.println("---------------------");
-
-
 
     }
+
 }
