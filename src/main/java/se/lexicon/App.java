@@ -63,6 +63,9 @@ public class App
         List<Student> finaAllEdit = studentManagement.findAll();
         finaAllEdit.forEach(System.out::println);
 
+        System.out.println("---------------------");
+
+
 
     }
 }
