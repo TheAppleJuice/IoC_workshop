@@ -51,8 +51,10 @@ public class App
 
         System.out.println("---------------------");
 
-        System.out.println("Find student by id: ");
+        System.out.println("Find student by id 1: ");
         System.out.println(studentManagement.find(1));
+        System.out.println("Find student by id 3: ");
+        System.out.println(studentManagement.find(3));
 
         Student editStudent = studentManagement.edit(student1);
 
